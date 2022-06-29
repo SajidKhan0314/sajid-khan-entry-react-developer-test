@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from "react";
-import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 
 class ProductVariant extends Component {
@@ -38,9 +37,6 @@ class ProductVariant extends Component {
     return <Fragment>{productVariantElement}</Fragment>;
   }
 }
-
-// Can add prop types if working in team
-ProductVariant.propTypes = {};
 
 export default ProductVariant;
 
@@ -96,6 +92,7 @@ const ColorVariant = styled.li`
     content: "";
     width: 3.2rem;
     height: 3.2rem;
+    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
     ${(props) =>
       css`
         background-color: ${props.color || "black"};

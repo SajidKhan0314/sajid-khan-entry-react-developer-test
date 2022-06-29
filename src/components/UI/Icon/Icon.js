@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+
 import sprite from "../../../assets/svg/sprite.svg";
 
 class Icon extends Component {
@@ -16,9 +16,6 @@ class Icon extends Component {
     );
   }
 }
-
-// Can add prop types if working in team
-Icon.propTypes = {};
 
 Icon.defaultProps = {
   height: 2,

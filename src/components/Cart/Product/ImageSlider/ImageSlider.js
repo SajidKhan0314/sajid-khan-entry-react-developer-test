@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 import Icon from "../../../UI/Icon/Icon";
 
@@ -48,9 +47,6 @@ class ImageSlider extends Component {
   }
 }
 
-// Can add prop types if working in team
-ImageSlider.propTypes = {};
-
 export default ImageSlider;
 
 const ProductImages = styled.div`
@@ -58,7 +54,7 @@ const ProductImages = styled.div`
   display: block;
   width: 20rem;
   min-height: 28.8rem;
-  object-fit: cover;
+  object-fit: contain;
 `;
 
 const ProductImagesSwitchButtons = styled.span`
@@ -84,5 +80,5 @@ const ProductImage = styled.img`
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 `;

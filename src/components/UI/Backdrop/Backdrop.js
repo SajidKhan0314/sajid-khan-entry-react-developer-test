@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Portal from "../Portal/Portal";
-import styled, { css } from "styled-components";
-import PropTypes from "prop-types";
+import styled from "styled-components";
 
 const BackdropContainer = styled.div`
   z-index: 999;
@@ -22,8 +21,5 @@ class Backdrop extends Component {
     );
   }
 }
-
-// Can add prop types if working in team
-Backdrop.propTypes = {};
 
 export default Backdrop;

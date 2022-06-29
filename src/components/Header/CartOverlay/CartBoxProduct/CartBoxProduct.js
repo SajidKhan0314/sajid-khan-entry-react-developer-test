@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from "react";
-import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import Icon from "../../../UI/Icon/Icon";
 import { connect } from "react-redux";
@@ -120,7 +119,7 @@ const ProductImage = styled.img`
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   height: 19rem;
   width: 12.1rem;
 `;
@@ -209,9 +208,6 @@ class CartBoxProduct extends Component {
     );
   }
 }
-
-// Can add prop types if working in team
-CartBoxProduct.propTypes = {};
 
 const mapStateToProps = (state) => ({
   selectedCurrency: state.currency.selectedCurrency,

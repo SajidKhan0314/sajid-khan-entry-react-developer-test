@@ -20,5 +20,9 @@ export const getAllPrices = (products, selectedCurrency) => {
   });
   const tax = totalPrice * 0.21;
   let finalPrice = tax + totalPrice;
-  return { totalPrice, tax, finalPrice };
+  return {
+    totalPrice: totalPrice.toFixed(2),
+    tax: tax.toFixed(2),
+    finalPrice: finalPrice.toFixed(2),
+  };
 };

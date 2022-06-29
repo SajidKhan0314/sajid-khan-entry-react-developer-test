@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from "react";
-import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import Icon from "../../UI/Icon/Icon";
 import { withRouter } from "../../../hoc/withRouter";
@@ -62,9 +61,6 @@ class CurrencyDropdown extends Component {
     );
   }
 }
-
-// Can add prop types if working in team
-CurrencyDropdown.propTypes = {};
 
 const mapStateToProps = (state) => ({
   selectedCurrency: state.currency.selectedCurrency,

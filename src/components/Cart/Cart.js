@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
 import styled from "styled-components";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Product from "./Product/Product";
 import { Button } from "../UI/StyledComponents/StyledComponents";
@@ -35,10 +34,10 @@ class Cart extends Component {
         <FinalPrice>
           <p>Tax 21%:</p>{" "}
           <strong>
-            {this.props.selectedCurrency.symbol} {tax.toFixed(2)}
+            {this.props.selectedCurrency.symbol} {tax}
           </strong>
           <p>Quantity:</p> <strong>{this.props.totalProducts}</strong>
-          <Total>Total:</Total> <strong>{finalPrice.toFixed(2)}</strong>
+          <Total>Total:</Total> <strong>{finalPrice}</strong>
         </FinalPrice>
         <Button width="27.9rem" primary>
           Order
@@ -47,9 +46,6 @@ class Cart extends Component {
     );
   }
 }
-
-// Can add prop types if working in team
-Cart.propTypes = {};
 
 const mapStateToProps = (state) => ({
   selectedCurrency: state.currency.selectedCurrency,

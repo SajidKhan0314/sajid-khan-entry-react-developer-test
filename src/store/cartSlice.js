@@ -1,4 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   products: {},
@@ -54,7 +54,10 @@ export const cartSlice = createSlice({
         // If the product exits
       } else {
         // Find product with selected attributes
-        let productIndex = findProductIndex(state.products, selectedAttributes);
+        let productIndex = findProductIndex(state.products, {
+          ...selectedAttributes,
+          id: product.id,
+        });
 
         // If the product with selected attributes exists
         if (productIndex > -1) {

@@ -36,6 +36,15 @@ export const Button = styled.button`
     `};
 
   ${(props) =>
+    props.disabled &&
+    css`
+      pointer-events: none;
+      background-color: var(--color-gray-2);
+      color: var(--color-gray-3);
+      border-color: var(--color-gray-2);
+    `};
+
+  ${(props) =>
     css`
       margin: ${props.margin};
       width: ${props.width};

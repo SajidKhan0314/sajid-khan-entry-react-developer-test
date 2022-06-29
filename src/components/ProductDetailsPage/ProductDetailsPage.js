@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { gql } from "@apollo/client";
 import { Query } from "@apollo/client/react/components";
 import { withRouter } from "../../hoc/withRouter";
@@ -101,10 +100,12 @@ class ProductDetailsPage extends Component {
                     );
                   })}
                 </ProductImages>
-                <SelectedProductImage
-                  src={this.state.selectedImage || product.gallery[0]}
-                  alt={product.name}
-                />
+                <ImageBox outOfStock={!product.inStock}>
+                  <SelectedProductImage
+                    src={this.state.selectedImage || product.gallery[0]}
+                    alt={product.name}
+                  />
+                </ImageBox>
                 <ProductDetails>
                   <CompanyName>{product.brand}</CompanyName>
                   <ProductName>{product.name}</ProductName>
@@ -138,12 +139,13 @@ class ProductDetailsPage extends Component {
                   <ProductPrice>{productPrice}</ProductPrice>
                   <Button
                     primary
+                    disabled={!product.inStock}
                     margin="0 0 4rem 0"
                     onClick={this.addProductToCartHandler.bind(this, product)}
                   >
                     Add to cart
                   </Button>
-                  <Markup content={product.description} />
+                  <ProductDescription content={product.description} />
                 </ProductDetails>
               </Fragment>
             );
@@ -154,8 +156,6 @@ class ProductDetailsPage extends Component {
   }
 }
 
-// Can add prop types if working in team
-ProductDetailsPage.propTypes = {};
 
 const mapStateToProps = (state) => ({
   selectedCurrency: state.currency.selectedCurrency,
@@ -195,15 +195,41 @@ const ProductImageItem = styled.li`
 const ProductImage = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  object-fit: contain;
+`;
+
+const ImageBox = styled.div`
+  position: relative;
+  width: 61rem;
+  height: 51.1rem;
+
+  ${(props) =>
+    props.outOfStock &&
+    css`
+      &::after {
+        content: "out of stock";
+        z-index: 111;
+        position: absolute;
+        display: grid;
+        place-items: center;
+        place-content: center;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        color: var(--color-gray-3);
+        font-size: 2.4rem;
+        text-transform: uppercase;
+        background-color: rgba(255, 255, 255, 0.5);
+        padding-bottom: 5rem;
+      }
+    `}
 `;
 
 const SelectedProductImage = styled.img`
-  width: 61rem;
-  height: 51.1rem;
-  object-fit: cover;
-  object-position: top;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   margin-right: 6rem;
 `;
 
@@ -251,4 +277,10 @@ const ProductPrice = styled.p`
   line-height: 1.8rem;
   margin-top: 0.2rem;
   margin-bottom: 2rem;
+`;
+
+const ProductDescription = styled(Markup)`
+  & > * {
+    margin-bottom: 0.6rem;
+  }
 `;

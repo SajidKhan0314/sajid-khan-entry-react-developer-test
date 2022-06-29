@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import Icon from "../UI/Icon/Icon";
 import { gql } from "@apollo/client";
@@ -105,9 +104,6 @@ class ProductListingPage extends Component {
   }
 }
 
-// Can add prop types if working in team
-ProductListingPage.propTypes = {};
-
 const mapStateToProps = (state) => ({
   selectedCurrency: state.currency.selectedCurrency,
 });
@@ -136,11 +132,10 @@ const ProductsGrid = styled.div`
 `;
 
 const AddToCartButton = styled.button`
-  opacity: 0;
+  display: none;
   position: absolute;
   right: 3.1rem;
   bottom: 5.6rem;
-  display: flex;
   justify-content: center;
   align-items: center;
   height: 5.2rem;
@@ -151,7 +146,6 @@ const AddToCartButton = styled.button`
   border: none;
   cursor: pointer;
   filter: var(--button-box-shadow);
-  transition: opacity 0.2s;
 
   svg {
     width: 2.4rem;
@@ -164,16 +158,18 @@ const Product = styled.div`
   padding: 1.6rem;
   transition: transform 0.2s, box-shadow 0.2s;
 
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
+  }
+
   ${(props) =>
     !props.outOfStock &&
     css`
       &:hover {
-        cursor: pointer;
-        transform: scale(1.05);
-        box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
-
         & ${AddToCartButton} {
-          opacity: 1;
+          display: flex;
         }
       }
     `}
@@ -181,7 +177,6 @@ const Product = styled.div`
   ${(props) =>
     props.outOfStock &&
     css`
-      pointer-events: none;
       &::before {
         content: "out of stock";
         position: absolute;
@@ -205,8 +200,7 @@ const ProductImage = styled.img`
   display: block;
   height: 33rem;
   width: 100%;
-  object-fit: cover;
-  object-position: center;
+  object-fit: contain;
   margin-bottom: 2.4rem;
 `;
 

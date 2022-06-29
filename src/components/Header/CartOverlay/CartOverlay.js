@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from "react";
-import PropTypes from "prop-types";
 import Icon from "../../UI/Icon/Icon";
 import Backdrop from "../../UI/Backdrop/Backdrop";
 import styled from "styled-components";
@@ -70,9 +69,6 @@ class CartOverlay extends Component {
     );
   }
 }
-
-// Can add prop types if working in team
-CartOverlay.propTypes = {};
 
 const mapStateToProps = (state) => ({
   selectedCurrency: state.currency.selectedCurrency,

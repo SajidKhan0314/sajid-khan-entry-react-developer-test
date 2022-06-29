@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import styled, { css } from "styled-components";
 
@@ -22,9 +21,6 @@ class Navigation extends Component {
     );
   }
 }
-
-// Can add prop types if working in team
-Navigation.propTypes = {};
 
 export default Navigation;
 

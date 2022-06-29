@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import React, { Component } from "react";
 import styled from "styled-components";
 import BrandIcon from "../../assets/svg/brand-icon.svg";
@@ -71,9 +70,6 @@ class Header extends Component {
     );
   }
 }
-
-// Can add prop types if working in team
-Header.propTypes = {};
 
 export default Header;
 
